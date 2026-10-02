@@ -33,10 +33,10 @@
 
 static const iwad_t iwads[] =
 {
+    { "doom.wad",     doom,      retail,     "Doom" },
     { "doom2.wad",    doom2,     commercial, "Doom II" },
     { "plutonia.wad", pack_plut, commercial, "Final Doom: Plutonia Experiment" },
     { "tnt.wad",      pack_tnt,  commercial, "Final Doom: TNT: Evilution" },
-    { "doom.wad",     doom,      retail,     "Doom" },
     { "doom1.wad",    doom,      shareware,  "Doom Shareware" },
     { "doom2f.wad",   doom2,     commercial, "Doom II: L'Enfer sur Terre" },
     { "chex.wad",     pack_chex, retail,     "Chex Quest" },
@@ -274,9 +274,9 @@ static registry_value_t root_path_keys[] =
 static char *root_path_subdirs[] =
 {
     ".", // [crispy] moved to top, so reworked IWADs will be found before the legacy DOS ones
+    "Ultimate Doom",
     "Doom2",
     "Final Doom",
-    "Ultimate Doom",
     "Plutonia",
     "TNT",
     "base\\wads",
@@ -297,10 +297,10 @@ static registry_value_t steam_install_location =
 
 static char *steam_install_subdirs[] =
 {
+    "steamapps\\common\\ultimate doom\\base",
     "steamapps\\common\\doom 2\\base",
     "steamapps\\common\\doom 2\\finaldoombase",
     "steamapps\\common\\final doom\\base",
-    "steamapps\\common\\ultimate doom\\base",
     "steamapps\\common\\heretic shadow of the serpent riders\\base",
     "steamapps\\common\\hexen\\base",
     "steamapps\\common\\hexen deathkings of the dark citadel\\base",
@@ -311,9 +311,9 @@ static char *steam_install_subdirs[] =
 
     // [crispy] Doom 1 + Doom 2 (not Chocolate Doom compatible):
 
-    "steamapps\\common\\Doom 2\\rerelease\\DOOM II_Data\\StreamingAssets",
     "steamapps\\common\\Ultimate Doom\\rerelease",
     "steamapps\\common\\Ultimate Doom\\rerelease\\DOOM_Data\\StreamingAssets",
+    "steamapps\\common\\Doom 2\\rerelease\\DOOM II_Data\\StreamingAssets",
 
     // From Heretic + Hexen Rerelease:
 
@@ -514,11 +514,11 @@ static void CheckDOSDefaults(void)
     // These are the default install directories used by the deice
     // installer program:
 
+    AddIWADDir("\\doom");               // Shareware / Registered Doom
     AddIWADDir("\\doom2");              // Doom II
     AddIWADDir("\\plutonia");           // Final Doom
     AddIWADDir("\\tnt");
     AddIWADDir("\\doom_se");            // Ultimate Doom
-    AddIWADDir("\\doom");               // Shareware / Registered Doom
     AddIWADDir("\\dooms");              // Shareware versions
     AddIWADDir("\\doomsw");
 
@@ -760,10 +760,10 @@ static void AddSteamDirs(void)
     }
     steampath = M_StringJoin(homedir, "/.steam/root/steamapps/common", NULL);
 
+    AddIWADPath(steampath, "/Ultimate Doom/base");
     AddIWADPath(steampath, "/Doom 2/base");
     AddIWADPath(steampath, "/Doom 2/finaldoombase");
     AddIWADPath(steampath, "/Master Levels of Doom/doom2");
-    AddIWADPath(steampath, "/Ultimate Doom/base");
     AddIWADPath(steampath, "/Final Doom/base");
     AddIWADPath(steampath, "/DOOM 3 BFG Edition/base/wads");
     AddIWADPath(steampath, "/Heretic Shadow of the Serpent Riders/base");
